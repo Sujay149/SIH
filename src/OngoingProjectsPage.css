@@ -1,0 +1,49 @@
+.ongoing-projects-page {
+  padding: 60px;
+  background-color:#ffffff; /* Change background color to black */
+  font-family: Arial, sans-serif;
+  min-height: 100vh; /* Ensure the page covers the full height of the viewport */
+}
+
+h1 {
+  text-align: center;
+  color: rgb(255, 0, 0); /* Change text color to white for visibility */
+  margin-bottom: 20px;
+}
+
+.projects-container {
+  background-color:#ffffff; /* Keep this consistent with the page background */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.project-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+  margin: 15px;
+  padding: 20px;
+  width: 300px;
+  transition: background 0.5s ease, transform 0.3s ease;
+}
+
+.project-card h2 {
+  color: #007bff;
+}
+
+.project-card ul {
+  list-style-type: square;
+  padding-left: 20px;
+}
+
+.project-card p {
+  margin: 8px 0;
+  color: rgb(14, 0, 0); /* Change text color to white for better readability */
+}
+
+.project-card:hover {
+  background: linear-gradient(45deg, beige, red);
+  transform: translateY(-10px);
+}
