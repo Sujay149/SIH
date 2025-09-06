@@ -1,21 +1,11 @@
 import React, { useState } from 'react';
-import './WorkingStartups.css';
 
 const districts = ['Ahmedabad', 'Surat', 'Vadodara', 'Rajkot', 'Gandhinagar', 'Baroda'];
 
 const industries = [
-  'Water Technology',
-  'Renewable Energy',
-  'Agriculture Technology',
-  'Health Technology',
-  'Education Technology',
-  'Fintech',
-  'Automotive',
-  'AI & Machine Learning',
-  'Textile',
-  'Biotechnology',
-  'Tourism',
-  'E-Commerce',
+  'Water Technology', 'Renewable Energy', 'Agriculture Technology', 'Health Technology',
+  'Education Technology', 'Fintech', 'Automotive', 'AI & Machine Learning', 'Textile',
+  'Biotechnology', 'Tourism', 'E-Commerce',
 ];
 
 const startupsData = [
@@ -209,64 +199,213 @@ const WorkingStartups = () => {
   };
 
   return (
-    <div className="container">
-      <h1>Working Startups</h1>
-      <div className="filter-container">
-        <div className="filter-group">
-          <label htmlFor="industry" className="industry">Industry:</label>
-          <select
-            id="industry"
-            value={selectedIndustry}
-            onChange={(e) => setSelectedIndustry(e.target.value)}
-          >
-            <option value="">All Industries</option>
-            {industries.map((industry) => (
-              <option key={industry} value={industry}>
-                {industry}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="filter-group">
-          <label htmlFor="district" className="district">District:</label>
-          <select
-            id="district"
-            value={selectedDistrict}
-            onChange={(e) => setSelectedDistrict(e.target.value)}
-          >
-            <option value="">All Districts</option>
-            {districts.map((district) => (
-              <option key={district} value={district}>
-                {district}
-              </option>
-            ))}
-          </select>
-        </div>
-        <button className="search-button" onClick={handleSearch}>Search</button>
-      </div>
-      <div className="startup-cards">
-        {filteredStartups.map((startup, index) => (
-          <div
-            key={index}
-            className={`startup-card ${expandedStartup === index ? 'expanded' : ''}`}
-            onClick={() => handleCardClick(index)}
-          >
-            <h2>{startup.name}</h2>
-            <p><strong>Industry:</strong> {startup.industry}</p>
-            <p><strong>Location:</strong> {startup.location}</p>
-            {expandedStartup === index && (
-              <div className="startup-details">
-                <p><strong>Mission:</strong> {startup.mission}</p>
-                <p><strong>Description:</strong> {startup.description}</p>
-                <p><strong>Progress:</strong> {startup.progress.join(', ')}</p>
-                <p><strong>Next Milestone:</strong> {startup.nextMilestone}</p>
-                <p><strong>Challenge:</strong> {startup.challenge}</p>
-                <p><strong>Opportunities:</strong> {startup.opportunities}</p>
-              </div>
-            )}
+    <div style={{
+      minHeight: '100vh',
+      background: 'linear-gradient(135deg, #f5f6fa 0%, #dcdde1 100%)',
+      padding: '40px 20px',
+      fontFamily: 'Arial, sans-serif',
+      animation: 'fadeIn 1s ease-in'
+    }}>
+      <div style={{ maxWidth: '1300px', margin: '0 auto' }}>
+        <h1 style={{
+          color: '#2c3e50',
+          fontSize: '2.8rem',
+          fontWeight: 'bold',
+          textAlign: 'center',
+          marginBottom: '40px',
+          textShadow: '1px 1px 3px rgba(0,0,0,0.1)',
+          borderBottom: '3px solid #3498db',
+          display: 'inline-block',
+          paddingBottom: '10px'
+        }}>
+          Working Startups
+        </h1>
+
+        <div style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: '20px',
+          justifyContent: 'center',
+          marginBottom: '40px',
+          background: 'rgba(255, 255, 255, 0.9)',
+          padding: '20px',
+          borderRadius: '15px',
+          boxShadow: '0 5px 15px rgba(0,0,0,0.1)'
+        }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', minWidth: '250px' }}>
+            <label style={{ color: '#34495e', fontWeight: '500', fontSize: '1.1rem' }}>
+              Industry:
+            </label>
+            <select
+              value={selectedIndustry}
+              onChange={(e) => setSelectedIndustry(e.target.value)}
+              style={{
+                padding: '12px',
+                borderRadius: '8px',
+                border: '1px solid #bdc3c7',
+                fontSize: '1rem',
+                background: '#fff',
+                cursor: 'pointer',
+                transition: 'border-color 0.3s ease',
+                ':focus': {
+                  borderColor: '#3498db',
+                  outline: 'none'
+                }
+              }}
+            >
+              <option value="">All Industries</option>
+              {industries.map((industry) => (
+                <option key={industry} value={industry}>{industry}</option>
+              ))}
+            </select>
           </div>
-        ))}
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', minWidth: '250px' }}>
+            <label style={{ color: '#34495e', fontWeight: '500', fontSize: '1.1rem' }}>
+              District:
+            </label>
+            <select
+              value={selectedDistrict}
+              onChange={(e) => setSelectedDistrict(e.target.value)}
+              style={{
+                padding: '12px',
+                borderRadius: '8px',
+                border: '1px solid #bdc3c7',
+                fontSize: '1rem',
+                background: '#fff',
+                cursor: 'pointer',
+                transition: 'border-color 0.3s ease',
+                ':focus': {
+                  borderColor: '#3498db',
+                  outline: 'none'
+                }
+              }}
+            >
+              <option value="">All Districts</option>
+              {districts.map((district) => (
+                <option key={district} value={district}>{district}</option>
+              ))}
+            </select>
+          </div>
+
+          <button
+            onClick={handleSearch}
+            style={{
+              background: 'linear-gradient(90deg, #3498db 0%, #2980b9 100%)',
+              color: 'white',
+              padding: '12px 25px',
+              borderRadius: '25px',
+              border: 'none',
+              fontSize: '1rem',
+              fontWeight: '500',
+              cursor: 'pointer',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              alignSelf: 'flex-end',
+              ':hover': {
+                transform: 'scale(1.05)',
+                boxShadow: '0 5px 15px rgba(52, 152, 219, 0.4)'
+              }
+            }}
+          >
+            Search
+          </button>
+        </div>
+
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+          gap: '25px'
+        }}>
+          {filteredStartups.map((startup, index) => (
+            <div
+              key={index}
+              onClick={() => handleCardClick(index)}
+              style={{
+                background: 'rgba(255, 255, 255, 0.95)',
+                borderRadius: '15px',
+                padding: '20px',
+                boxShadow: '0 5px 20px rgba(0,0,0,0.1)',
+                transition: 'all 0.3s ease',
+                cursor: 'pointer',
+                animation: `slideUp 0.5s ease ${index * 0.1}s both`,
+                ...(expandedStartup === index ? {
+                  transform: 'scale(1.02)',
+                  boxShadow: '0 10px 30px rgba(0,0,0,0.15)'
+                } : {
+                  ':hover': {
+                    transform: 'translateY(-5px)',
+                    boxShadow: '0 8px 25px rgba(0,0,0,0.12)'
+                  }
+                })
+              }}
+            >
+              <h2 style={{
+                color: '#2c3e50',
+                fontSize: '1.6rem',
+                marginBottom: '10px',
+                fontWeight: '600'
+              }}>
+                {startup.name}
+              </h2>
+              <p style={{ color: '#555', fontSize: '1rem', marginBottom: '5px' }}>
+                <strong>Industry:</strong> {startup.industry}
+              </p>
+              <p style={{ color: '#555', fontSize: '1rem', marginBottom: '10px' }}>
+                <strong>Location:</strong> {startup.location}
+              </p>
+
+              {expandedStartup === index && (
+                <div style={{
+                  background: 'rgba(240, 248, 255, 0.7)',
+                  padding: '15px',
+                  borderRadius: '10px',
+                  borderLeft: '4px solid #3498db',
+                  animation: 'fadeIn 0.3s ease'
+                }}>
+                  <p style={{ color: '#666', marginBottom: '8px' }}>
+                    <strong>Mission:</strong> {startup.mission}
+                  </p>
+                  <p style={{ color: '#666', marginBottom: '8px' }}>
+                    <strong>Description:</strong> {startup.description}
+                  </p>
+                  <p style={{ color: '#666', marginBottom: '8px' }}>
+                    <strong>Progress:</strong> {startup.progress.join(', ')}
+                  </p>
+                  <p style={{ color: '#666', marginBottom: '8px' }}>
+                    <strong>Next Milestone:</strong> {startup.nextMilestone}
+                  </p>
+                  <p style={{ color: '#666', marginBottom: '8px' }}>
+                    <strong>Challenge:</strong> {startup.challenge}
+                  </p>
+                  <p style={{ color: '#666' }}>
+                    <strong>Opportunities:</strong> {startup.opportunities}
+                  </p>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
+
+      {/* Inline keyframes for animations */}
+      <style>
+        {`
+          @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+          }
+          @keyframes slideUp {
+            from {
+              opacity: 0;
+              transform: translateY(20px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+        `}
+      </style>
     </div>
   );
 };

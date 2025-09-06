@@ -25,7 +25,6 @@ import StartupResourcesPage from './StartupResourcesPage';
 import NotificationsPage from './NotificationsPage';
 import Dashboard from './Dashboard';
 import Footer from './Footer';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const App = () => {
