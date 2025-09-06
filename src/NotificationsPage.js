@@ -42,6 +42,53 @@ const NotificationsPage = ({ setNotificationCount }) => {
             time: "12h",
             message: "SmartCity Innovations is working on smart traffic and waste management solutions to help make cities in Gujarat more efficient.",
         },
+        {
+            profileImage: 'https://via.placeholder.com/40',
+            name: "SmartCity Innovations",
+            time: "12h",
+            message: "SmartCity Innovations is working on smart traffic and waste management solutions to help make cities in Gujarat more efficient.",
+        },
+        {
+            profileImage: 'https://via.placeholder.com/40',
+            name: "SmartCity Innovations",
+            time: "12h",
+            message: "SmartCity Innovations is working on smart traffic and waste management solutions to help make cities in Gujarat more efficient.",
+        },
+        {
+            profileImage: 'https://via.placeholder.com/40',
+            name: "SmartCity Innovations",
+            time: "12h",
+            message: "SmartCity Innovations is working on smart traffic and waste management solutions to help make cities in Gujarat more efficient.",
+        },
+        {
+            profileImage: 'https://via.placeholder.com/40',
+            name: "SmartCity Innovations",
+            time: "12h",
+            message: "SmartCity Innovations is working on smart traffic and waste management solutions to help make cities in Gujarat more efficient.",
+        },
+        {
+            profileImage: 'https://via.placeholder.com/40',
+            name: "SmartCity Innovations",
+            time: "12h",
+            message: "SmartCity Innovations is working on smart traffic and waste management solutions to help make cities in Gujarat more efficient.",
+        },
+        {
+            profileImage: 'https://via.placeholder.com/40',
+            name: "SmartCity Innovations",
+            time: "12h",
+            message: "SmartCity Innovations is working on smart traffic and waste management solutions to help make cities in Gujarat more efficient.",
+        },  {
+            profileImage: 'https://via.placeholder.com/40',
+            name: "SmartCity Innovations",
+            time: "12h",
+            message: "SmartCity Innovations is working on smart traffic and waste management solutions to help make cities in Gujarat more efficient.",
+        },
+        {
+            profileImage: 'https://via.placeholder.com/40',
+            name: "SmartCity Innovations",
+            time: "12h",
+            message: "SmartCity Innovations is working on smart traffic and waste management solutions to help make cities in Gujarat more efficient.",
+        },
     ];
 
     useEffect(() => {

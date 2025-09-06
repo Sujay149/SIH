@@ -1,10 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css'; // Add this for styling
 
 const Navbar = ({ notificationCount }) => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setIsScrolled(scrollTop > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
+      {/* Brand Logo/Title */}
+      <div className="navbar-brand">
+        <Link to="/HomePage" className="brand-link">
+          <span className="brand-icon">🚀</span>
+          <span className="brand-text">GRISMP</span>
+        </Link>
+      </div>
       
       <ul className="nav-list">
         <li className="nav-item">

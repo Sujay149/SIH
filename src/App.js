@@ -16,11 +16,9 @@ import Navbar from './Navbar';
 import HomePage from './HomePage';
 import ChatbotComponent from "./ChatbotComponent";
 import IPRDashboard from './IPRDashboard';
-import Login from './Login';
 import InnovationSupport from './Innovationsupport';
 import WorkingStartups from './WorkingStartups';
 import ResearchProjects from './ResearchProjects';
-import Register from './Register';
 import StartupResourcesPage from './StartupResourcesPage';
 import NotificationsPage from './NotificationsPage';
 import Dashboard from './Dashboard';
@@ -37,8 +35,6 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/HomePage" element={<HomePage />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/Register" element={<Register />} />
           <Route path="/IPRDashboard" element={<IPRDashboard />} />
           <Route path="/ChatbotComponent" element={<ChatbotComponent />} />
           <Route path="/researches" element={<AddResearchesPage />} />

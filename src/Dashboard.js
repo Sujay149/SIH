@@ -1,3 +1,5 @@
+/* eslint-disable no-dupe-keys */
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useRef } from 'react';
 import {
   Chart as ChartJS,

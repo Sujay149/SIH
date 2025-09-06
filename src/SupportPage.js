@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './MentorList.css';
 
-
-// Updated mentor data
+// Updated mentor data (unchanged)
 const mentors = [
-  
   { id: 1, name: 'Anamika Dey', expertise: 'CEO, Gujarat Grassroots Innovation Augmentation Network (GIAN)', profilePic: 'https://startup.gujarat.gov.in/files/2022/10/ccb20d25-02af-450a-beb5-2100bbfc01c1_download.jpg', bio: 'CEO of GIAN with extensive experience in grassroots innovation.' },
   { id: 2, name: 'Dr. Shrinivas Savale', expertise: 'AIC-LMCP Foundation', profilePic: 'https://startup.gujarat.gov.in/files/2022/9/727692c7-1210-4895-9c9c-a195b3e5018b_IMG_E3317.JPG', bio: 'Expert in various aspects of business and innovation with AIC-LMCP Foundation.' },
   { id: 3, name: 'Sudeep Ambare', expertise: 'International Automobile Centre of Excellence', profilePic: 'https://startup.gujarat.gov.in/files/2022/3/294e2bf0-415a-47bb-93fc-dcdab43ac739_Sudeep%20Ambare-Profile%20Photograph.jpg', bio: 'Specialist in automobile engineering and innovation.' },
@@ -68,34 +65,145 @@ const MentorList = () => {
     ? mentors
     : mentors.filter(mentor => mentor.expertise === selectedExpertise);
 
+  // Determine screen size for responsive adjustments
+  const isMobile = window.innerWidth <= 480;
+  const isTablet = window.innerWidth <= 768 && window.innerWidth > 480;
+
   return (
-    <div className="container">
-      <h1 className="text-3xl font-bold mb-6">Mentor Profiles</h1>
-      <div className="filter-container">
-        <label htmlFor="expertise-filter" className="text-lg font-semibold">Filter by Expertise:</label>
+    <div style={{
+      maxWidth: '1200px',
+      margin: '0 auto',
+      padding: isMobile ? '5px' : isTablet ? '10px' : '15px',
+      width: '100%',
+      boxSizing: 'border-box',
+    }}>
+      <h1 style={{
+        textAlign: 'center',
+        color: '#333',
+        fontSize: `clamp(1.5rem, 4vw, 2.5rem)`,
+        marginBottom: '1.5rem',
+      }}>
+        Mentor Profiles
+      </h1>
+      <div style={{
+        marginBottom: '20px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexWrap: 'wrap',
+        gap: '10px',
+        flexDirection: isTablet || isMobile ? 'column' : 'row',
+      }}>
+        <label htmlFor="expertise-filter" style={{
+          fontSize: '1.125rem',
+          fontWeight: '600',
+          color: '#333',
+        }}>
+          Filter by Expertise:
+        </label>
         <select
           id="expertise-filter"
           value={selectedExpertise}
           onChange={(e) => setSelectedExpertise(e.target.value)}
-          className="filter-select"
+          style={{
+            marginLeft: isTablet || isMobile ? '0' : '10px',
+            padding: '8px',
+            borderRadius: '4px',
+            border: '1px solid #ccc',
+            fontSize: `clamp(0.875rem, 2.5vw, 1rem)`,
+            width: isTablet || isMobile ? '100%' : '100%',
+            maxWidth: isTablet || isMobile ? 'none' : '200px',
+          }}
         >
           {expertiseOptions.map(option => (
             <option key={option} value={option}>{option}</option>
           ))}
         </select>
       </div>
-      <div className="mentor-list">
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: isMobile ? '1fr' : isTablet ? 'repeat(auto-fit, minmax(200px, 1fr))' : 'repeat(auto-fit, minmax(250px, 1fr))',
+        gap: isMobile ? '10px' : isTablet ? '15px' : '20px',
+        padding: '0 10px',
+      }}>
         {filteredMentors.map((mentor) => (
-          <div key={mentor.id} className="mentor-card">
-            <img src={mentor.profilePic} alt={mentor.name} className="mentor-profile-pic" />
-            <h2>{mentor.name}</h2>
-            <p className="mentor-expertise">{mentor.expertise}</p>
-            <p className="mentor-bio">{mentor.bio}</p>
-            <Link to={`/mentors/${mentor.id}`} className="view-details-btn">View Details</Link>
+          <div key={mentor.id} style={{
+            backgroundColor: '#fff',
+            border: '1px solid #ddd',
+            borderRadius: '8px',
+            padding: isMobile ? '10px' : isTablet ? '10px' : '15px',
+            textAlign: 'center',
+            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+            transition: 'transform 0.3s ease',
+            width: '100%',
+            boxSizing: 'border-box',
+          }}
+          onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-5px)'}
+          onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+          >
+            <img src={mentor.profilePic} alt={mentor.name} style={{
+              width: isMobile ? '60px' : `clamp(80px, 20vw, 100px)`,
+              height: isMobile ? '60px' : `clamp(80px, 20vw, 100px)`,
+              borderRadius: '50%',
+              objectFit: 'cover',
+              marginBottom: '10px',
+            }} />
+            <h2 style={{
+              fontSize: `clamp(1rem, 3vw, 1.25rem)`,
+              margin: '10px 0',
+              color: '#2c3e50',
+            }}>
+              {mentor.name}
+            </h2>
+            <p style={{
+              color: '#16a085',
+              fontSize: `clamp(0.875rem, 2.5vw, 1rem)`,
+              marginBottom: '10px',
+            }}>
+              {mentor.expertise}
+            </p>
+            <p style={{
+              color: '#7f8c8d',
+              fontSize: `clamp(0.75rem, 2vw, 0.9rem)`,
+              marginBottom: '15px',
+            }}>
+              {mentor.bio}
+            </p>
+            <Link to={`/mentors/${mentor.id}`} style={{
+              display: 'inline-block',
+              padding: isMobile ? '6px 12px' : '8px 16px',
+              color: '#fff',
+              backgroundColor: '#3498db',
+              borderRadius: '4px',
+              textDecoration: 'none',
+              transition: 'background-color 0.3s ease',
+              fontSize: `clamp(0.875rem, 2.5vw, 1rem)`,
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#2980b9'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#3498db'}
+            >
+              View Details
+            </Link>
           </div>
         ))}
       </div>
-      <Link to="/add-mentor" className="add-mentor-btn">Add New Mentor</Link>
+      <Link to="/add-mentor" style={{
+        display: 'block',
+        textAlign: 'center',
+        padding: isMobile ? '6px 12px' : '10px 20px',
+        backgroundColor: '#2ecc71',
+        color: '#fff',
+        textDecoration: 'none',
+        borderRadius: '5px',
+        margin: '20px auto 0',
+        width: `clamp(150px, 50%, 200px)`,
+        fontSize: `clamp(0.875rem, 2.5vw, 1rem)`,
+      }}
+      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#27ae60'}
+      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#2ecc71'}
+      >
+        Add New Mentor
+      </Link>
     </div>
   );
 };
